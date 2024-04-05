@@ -44,6 +44,20 @@ const getUsersList = async () => {
   try {
     const connection = await createConnection();
     const [results, fields] = await connection.query("SELECT * FROM users");
+    // console.log("check results", results);
+    return results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteUser = async (id) => {
+  try {
+    const connection = await createConnection();
+    const [results, fields] = await connection.query(
+      "DELETE FROM users WHERE id = ?",
+      [id]
+    );
     console.log("check results", results);
     return results;
   } catch (error) {
@@ -51,4 +65,4 @@ const getUsersList = async () => {
   }
 };
 
-export { hashPassword, createNewUser, getUsersList };
+export { hashPassword, createNewUser, getUsersList, deleteUser };

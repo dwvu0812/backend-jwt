@@ -1,4 +1,8 @@
-import { createNewUser, getUsersList } from "../service/userService";
+import {
+  createNewUser,
+  getUsersList,
+  deleteUser,
+} from "../service/userService";
 
 const helloWorld = (req, res) => {
   return res.render("home.ejs");
@@ -12,8 +16,7 @@ const handleCreateNewUser = async (req, res) => {
   console.log("check body", req.body);
   const { email, password, username } = req.body;
   await createNewUser(email, password, username);
-  await handleGetUsersList();
-  res.send("Create new user");
+  res.redirect("/user");
 };
 
 const handleGetUsersList = async (req, res) => {
@@ -21,9 +24,17 @@ const handleGetUsersList = async (req, res) => {
   res.render("user.ejs", { users });
 };
 
+const handleDeleteUser = async (req, res) => {
+  const { id } = req.params;
+  console.log("Check ~ handleDeleteUser ~ id:", id);
+  await deleteUser(id);
+  res.redirect("/user");
+};
+
 module.exports = {
   helloWorld,
   user,
   handleCreateNewUser,
   handleGetUsersList,
+  handleDeleteUser,
 };
