@@ -45,6 +45,7 @@ const getUsersList = async () => {
     const connection = await createConnection();
     const [results, fields] = await connection.query("SELECT * FROM users");
     console.log("check results", results);
+    return results;
   } catch (error) {
     console.log(error);
   }

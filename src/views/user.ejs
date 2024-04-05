@@ -58,5 +58,33 @@
         </form>
       </div>
     </div>
+    <div class="container mt-3">
+      <h3>Users Table</h3>
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ul>
+            <% users.map((user)=>{ %>
+            <tr>
+              <th scope="row"><%=user.id%></th>
+              <td><%=user.email%></td>
+              <td><%=user.username%></td>
+              <td>
+                <button class="btn btn-warning">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+            <% }) %>
+          </ul>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
