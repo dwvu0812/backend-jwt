@@ -45,8 +45,9 @@ const getUpdateUser = async (req, res) => {
   const { id } = req.params;
   console.log("Check ~ getUpdateUser ~ id:", id);
   const user = await getUserById(id);
+  console.log("Check ~ getUpdateUser ~ user:", user);
   // const user = {};
-  res.render("update-user.ejs", { userData: user[0] });
+  res.render("update-user.ejs", { userData: user.dataValues });
 };
 
 module.exports = {
