@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  GroupRole.init(
+  Group_Role.init(
     {
       groupId: DataTypes.INTEGER,
       roleId: DataTypes.INTEGER,
