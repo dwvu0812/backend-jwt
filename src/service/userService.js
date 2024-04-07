@@ -34,6 +34,15 @@ const createNewUser = async (email, password, username) => {
 
 const getUsersList = async () => {
   try {
+    let newUser = await db.User.findOne({
+      where: { id: 1 },
+      include: db.Group,
+      raw: true,
+      nest: true,
+    });
+
+    console.log("check new users: ", newUser);
+
     const users = await db.User.findAll();
     return users;
   } catch (error) {
